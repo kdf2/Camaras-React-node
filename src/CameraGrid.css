@@ -1,0 +1,98 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* importante */
+  background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+.main-content {
+  flex: 1; /* ocupa todo el espacio restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente si hay pocas tarjetas */
+  align-items: center;
+  padding: 20px;
+}
+
+/* Grilla de cámaras */
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px; /* opcional para centrar en pantallas grandes */
+}
+
+/* Cada tarjeta */
+.camera-card {
+  padding: 20px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.camera-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Botón */
+.camera-button {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.camera-button:hover {
+  background: #125ba0;
+  transform: scale(1.05);
+}
+
+/* Títulos y estados */
+.camera-title {
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.status-online {
+  color: green;
+  font-weight: bold;
+}
+
+.status-offline {
+  color: red;
+  font-weight: bold;
+}
+
+.encrypt-yes {
+  color: crimson;
+}
+
+.encrypt-no {
+  color: gray;
+}
+
+h1{
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}

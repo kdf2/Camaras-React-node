@@ -1,0 +1,51 @@
+/* Player.css */
+
+/* Contenedor del header (botón + título) */
+.player-header {
+  display: flex;
+  align-items: center;       /* Centra verticalmente */
+  justify-content: center;   /* Centra el título horizontalmente */
+  position: relative;        /* Para posicionar el botón a la izquierda */
+  margin-bottom: 20px;
+}
+
+/* Botón "Regresar" */
+.player-back-btn {
+  position: absolute;
+  left: 0;
+  padding: 8px 15px;
+  background: #555;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Título centrado */
+.player-title {
+  margin: 0;
+}
+h2{
+    text-align: center;
+    color: white;
+}
+
+/* Botón "Regresar" */
+.player-back-btn {
+  position: absolute;
+  left: 0;
+  padding: 8px 15px;
+  background: #555;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 🔹 transición suave */
+}
+
+/* Hover */
+.player-back-btn:hover {
+  background: #777;       /* Cambia el color de fondo */
+  transform: scale(1.05); /* Agranda ligeramente */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra ligera */
+}

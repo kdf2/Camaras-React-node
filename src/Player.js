@@ -1,67 +1,49 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import EZUIKit from "ezuikit-js";
+import "./Player.css"; // 🔹 Importamos el CSS
 
-export default function Player() {
-  const [serial] = useState("BD3569899");
-  const [token, setToken] = useState("at.761eu9142l14twahdevu0ixq3zz5quhc-2dp564gw2h-0t3kt8i-r7putdqbx");
-  const [init, setInit] = useState(false);
-
-  const playerRef = useRef(null);
-
- const url = `ezopen://open.ezviz.com/${serial}/1.hd.live`;
-
+export default function Player({ camera, onBack }) {
   useEffect(() => {
-    if (!init) return;
+    let player = null;
 
-    // destruir instancia anterior
-    if (playerRef.current) {
-      playerRef.current.destroy();
-      playerRef.current = null;
+    async function start() {
+      const r = await fetch("http://localhost:3000/token");
+      const data = await r.json();
+      const token = data.data.accessToken;
+
+      const url = `ezopen://open.ezviz.com/${camera.serial}/1.hd.live`;
+
+      player = new EZUIKit.EZUIKitPlayer({
+        id: "player-ezviz",
+        accessToken: token,
+        url: url,
+        template: "pcLive",
+        audio: 1,
+        language: "en",
+        env: { domain: "https://iusopen.ezvizlife.com" },
+      });
     }
 
-    // inicializar EZUIKitPlayer
-    playerRef.current = new EZUIKit.EZUIKitPlayer({
-      id: "player-ezviz",
-      accessToken: token,
-      url: url,
-      template: "pcLive",
-      audio: 1,
-      env: {
-        domain: "https://iusopen.ezvizlife.com",
-      },
-    });
+    start();
 
     return () => {
-      if (playerRef.current) {
-        playerRef.current.destroy();
-      }
+      if (player) player.destroy();
     };
-  }, [init]);
-
-  const startPlayer = () => {
-    if (!token) {
-      alert("Debes ingresar tu accessToken primero.");
-      return;
-    }
-    setInit(true);
-  };
+  }, [camera]);
 
   return (
-    <div style={{ padding: 20 }}>
-      {!init ? (
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <input
-            type="text"
-            placeholder="AccessToken de EZVIZ"
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-          />
+    <div>
+      <div className="player-header">
+        <button className="player-back-btn" onClick={onBack}>
+          ← Regresar
+        </button>
+        <h2 className="player-title">{camera.name}</h2>
+      </div>
 
-          <button onClick={startPlayer}>Iniciar Reproducción</button>
-        </div>
-      ) : (
-        <div id="player-ezviz" style={{ width: "100%", height: 400, background: "#000" }}></div>
-      )}
+      <div
+        id="player-ezviz"
+        style={{ width: "100%", height:550, background: "black" }}
+      ></div>
     </div>
   );
 }
