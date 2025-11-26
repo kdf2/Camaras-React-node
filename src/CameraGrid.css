@@ -5,9 +5,6 @@ html, body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* importante */
   background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,6 +28,8 @@ body {
   gap: 20px;
   width: 100%;
   max-width: 1200px; /* opcional para centrar en pantallas grandes */
+    margin: 0 auto;
+
 }
 
 /* Cada tarjeta */

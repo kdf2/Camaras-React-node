@@ -25,11 +25,6 @@
 .player-title {
   margin: 0;
 }
-h2{
-    text-align: center;
-    color: white;
-}
-
 /* Botón "Regresar" */
 .player-back-btn {
   position: absolute;
@@ -49,3 +44,4 @@ h2{
   transform: scale(1.05); /* Agranda ligeramente */
   box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra ligera */
 }
+

@@ -32,7 +32,7 @@ export default function Player({ camera, onBack }) {
   }, [camera]);
 
   return (
-    <div>
+    <div className="player-wrapper">
       <div className="player-header">
         <button className="player-back-btn" onClick={onBack}>
           ← Regresar
