@@ -7,7 +7,7 @@ export default function Player({ camera, onBack }) {
     let player = null;
 
     async function start() {
-      const r = await fetch("http://localhost:3000/token");
+      const r = await fetch("https://camaras-react-node-1.onrender.com/token");
       const data = await r.json();
       const token = data.data.accessToken;
 

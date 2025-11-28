@@ -8,7 +8,7 @@ export default function CameraGrid({ onSelectCamera }) {
   useEffect(() => {
     async function load() {
       try {
-        const r = await fetch("http://localhost:3000/cameras");
+        const r = await fetch("https://camaras-react-node-1.onrender.com/cameras");
         const data = await r.json();
         console.log("📷 Datos recibidos:", data);
 
